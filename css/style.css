@@ -1,0 +1,40 @@
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+#navbar {
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
+}
+
+.navbar-visible {
+  transform: translateY(0);
+}
+
+.navbar-hidden {
+  transform: translateY(-100%);
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#chatButton,
+#chatWindow {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+#chatButton.fade-in-visible,
+#chatWindow.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
