@@ -30,7 +30,18 @@ menuClose.addEventListener("click", () => {
 });
 
 // Click outside schließt Menü
-window.addEventListener("click", (e) => {
+window.addEventListener("touchstart", (e) => {
+  if (
+    !mobileMenu.classList.contains("translate-x-full") &&
+    !mobileMenu.contains(e.target) &&
+    !menuToggle.contains(e.target)
+  ) {
+    mobileMenu.classList.add("translate-x-full");
+    document.body.classList.remove("overflow-hidden");
+  }
+});
+
+window.addEventListener("mousedown", (e) => {
   if (
     !mobileMenu.classList.contains("translate-x-full") &&
     !mobileMenu.contains(e.target) &&
