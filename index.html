@@ -31,7 +31,7 @@
     </header>
 
     <!-- Mobile Slide-in Menu -->
-    <div id="mobileMenu" class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-40 md:hidden">
+    <div id="mobileMenu" class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-40 md:hidden touch-none"">
       <div class="flex justify-end p-4">
         <button id="menuClose" class="text-gray-600">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -44,14 +44,15 @@
         <a href="#ueber" class="hover:text-orange-600">Über uns</a>
         <a href="#kontakt" class="hover:text-orange-600">Kontakt</a>
       </nav>
+      <div class="p-4 text-sm text-center text-gray-400">Wische nach rechts oder tippe außerhalb zum Schließen</div>
     </div>
 
     <!-- Hero -->
-    <section class="fade-in h-[70vh] flex flex-col md:flex-row">
-      <div class="w-full md:w-1/2 h-[70vh] bg-cover bg-center" style="background-image: url('assets/hero.png');">
-        <div class="w-full h-full bg-black bg-opacity-40"></div>
+    <section class="fade-in flex flex-col md:flex-row min-h-[70vh]">
+      <div class="w-full md:w-1/2 h-64 md:h-auto bg-cover bg-center relative" style="background-image: url('assets/hero.png');">
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
       </div>
-      <div class="w-full md:w-1/2 flex items-center justify-center text-center md:text-left px-6">
+      <div class="w-full md:w-1/2 flex items-center justify-center text-center md:text-left px-6 py-10">
         <div>
           <h2 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">
             Auflösen. Entrümpeln. Neuanfangen.

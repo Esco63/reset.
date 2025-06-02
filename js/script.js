@@ -21,10 +21,37 @@ const mobileMenu = document.getElementById("mobileMenu");
 
 menuToggle.addEventListener("click", () => {
   mobileMenu.classList.remove("translate-x-full");
+  document.body.classList.add("overflow-hidden");
 });
 
 menuClose.addEventListener("click", () => {
   mobileMenu.classList.add("translate-x-full");
+  document.body.classList.remove("overflow-hidden");
+});
+
+// Click outside schließt Menü
+window.addEventListener("click", (e) => {
+  if (
+    !mobileMenu.classList.contains("translate-x-full") &&
+    !mobileMenu.contains(e.target) &&
+    !menuToggle.contains(e.target)
+  ) {
+    mobileMenu.classList.add("translate-x-full");
+    document.body.classList.remove("overflow-hidden");
+  }
+});
+
+// Swipe (touch) schließen
+let touchStartX = 0;
+mobileMenu.addEventListener("touchstart", (e) => {
+  touchStartX = e.changedTouches[0].clientX;
+});
+mobileMenu.addEventListener("touchend", (e) => {
+  const touchEndX = e.changedTouches[0].clientX;
+  if (touchEndX > touchStartX + 50) {
+    mobileMenu.classList.add("translate-x-full");
+    document.body.classList.remove("overflow-hidden");
+  }
 });
 
 // Fade-in Scroll Animation
@@ -61,4 +88,3 @@ chatButton.addEventListener("click", () => {
 closeChat.addEventListener("click", () => {
   chatWindow.classList.add("hidden");
 });
-
