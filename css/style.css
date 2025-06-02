@@ -1,7 +1,9 @@
+/* Grundschriftart */
 body {
   font-family: 'Inter', sans-serif;
 }
 
+/* Navbar Animation */
 #navbar {
   transition: transform 0.3s ease-in-out;
   will-change: transform;
@@ -15,6 +17,7 @@ body {
   transform: translateY(-100%);
 }
 
+/* Fade-in für Scroll-Effekte */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -26,6 +29,7 @@ body {
   transform: translateY(0);
 }
 
+/* Chatbutton und Fenster - Animation */
 #chatButton,
 #chatWindow {
   opacity: 0;
@@ -37,4 +41,11 @@ body {
 #chatWindow.fade-in-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Mobile Menü Swipe- und Slide-Verhalten */
+#mobileMenu {
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
+  touch-action: pan-y;
 }

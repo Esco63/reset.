@@ -11,7 +11,7 @@ window.addEventListener("scroll", () => {
     navbar.classList.remove("navbar-hidden");
     navbar.classList.add("navbar-visible");
   }
-  lastScrollY = currentScrollY;
+  lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
 });
 
 // Mobile Menü
@@ -83,8 +83,10 @@ const closeChat = document.getElementById("closeChat");
 
 chatButton.addEventListener("click", () => {
   chatWindow.classList.remove("hidden");
+  chatWindow.classList.add("fade-in-visible");
 });
 
 closeChat.addEventListener("click", () => {
+  chatWindow.classList.remove("fade-in-visible");
   chatWindow.classList.add("hidden");
 });
