@@ -1,0 +1,162 @@
+/* Grundschriftart */
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Navbar Animation */
+#navbar {
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
+}
+
+.navbar-visible {
+  transform: translateY(0);
+}
+
+.navbar-hidden {
+  transform: translateY(-100%);
+}
+
+/* Fade-in für Scroll-Effekte */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Chatbutton (jetzt WhatsApp-Button) - nur dessen Animation */
+#chatButton {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+#chatButton.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile Menü Swipe- und Slide-Verhalten */
+#mobileMenu {
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
+  touch-action: pan-y;
+}
+
+/* *** NEUE UND ÜBERARBEITETE CSS-REGELN FÜR DEN VORHER/NACHHER-SLIDER *** */
+
+.comparison-slider {
+  position: relative;
+  /* Wichtig für die korrekte Abschnitte der Bilder */
+  overflow: hidden; 
+  cursor: ew-resize; /* Cursor für horizontales Verschieben */
+  touch-action: pan-x; /* Für Touch-Geräte */
+  /* Border und Shadow sind bereits im HTML */
+}
+
+/* Wichtig: Sicherstellen, dass die Bilder absolut positioniert sind und den gesamten Platz einnehmen */
+/* Das ist der entscheidende Punkt, warum der Slider nicht funktioniert, wenn die Bilder nicht übereinander liegen */
+.comparison-slider-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none; /* Wichtig, damit Klicks/Touches den Handle erreichen */
+  user-select: none; /* Verhindert Bildauswahl beim Ziehen */
+  -webkit-user-drag: none; /* Für Webkit-Browser */
+}
+
+/* Das "Nachher"-Bild, dessen Breite durch JS gesteuert wird */
+.slider-image-after {
+  /* Initialbreite, wird von JavaScript überschrieben */
+  width: 50%; 
+}
+
+/* Der Schieberegler (die Linie) */
+.comparison-slider-handle {
+  position: absolute;
+  top: 0;
+  left: 50%; /* Startposition in der Mitte */
+  height: 100%;
+  width: 2px; /* Dünne Linie als Schieberegler */
+  background-color: white; /* Farbe der Linie */
+  transform: translateX(-50%); /* Zentriert die Linie */
+  z-index: 20; /* Über den Bildern und Labels */
+  cursor: grab; /* Cursor für Ziehen */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.1s ease-out; /* Optischer Effekt beim Ziehen */
+}
+
+.comparison-slider-handle:active {
+  cursor: grabbing;
+}
+
+/* Der Kreis am Handle */
+.comparison-slider-handle div {
+  width: 40px; /* Größerer Kreis */
+  height: 40px; /* Größerer Kreis */
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.2), 0 0 0 6px rgba(255,255,255,0.7); /* Doppelter Ring-Schatten */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Für die SVG-Pfeile */
+}
+
+/* Die Pfeile im Kreis */
+.comparison-slider-handle svg {
+  width: 20px; /* Größere Pfeile */
+  height: 20px;
+  color: #6B7280; /* Tailwind gray-500/600 */
+}
+
+/* Textlabels für Vorher/Nachher direkt auf den Bildern */
+.comparison-slider .label {
+  position: absolute;
+  padding: 4px 8px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 0.75rem; /* text-xs in Tailwind */
+  border-radius: 4px;
+  z-index: 10; /* Über den Bildern, aber unter dem Handle */
+  pointer-events: none; /* Labels sollen keine Interaktion abfangen */
+}
+
+.comparison-slider .label-before {
+  top: 10px;
+  left: 10px;
+}
+
+.comparison-slider .label-after {
+  top: 10px;
+  right: 10px;
+}
+
+/* Wichtig: Dieser Block stellt sicher, dass die Aspect-Ratio-Klassen korrekt funktionieren */
+/* und die absolut positionierten Bilder innerhalb des Containers korrekt angezeigt werden. */
+/* Dies ist eine Tailwind-spezifische Lösung, falls Tailwind-Interna überschrieben werden. */
+/* Es sorgt dafür, dass der Eltern-Container (comparison-slider) eine Höhe bekommt */
+/* und seine Kinder korrekt positioniert werden. */
+.aspect-w-16.aspect-h-9 {
+    position: relative; /* Muss relativ sein für absolute Kinder */
+    padding-bottom: 56.25%; /* 9 / 16 = 0.5625 (für 16:9 Aspect Ratio) */
+    height: 0; /* Wichtig, damit padding-bottom die Höhe definiert */
+}
+
+.aspect-w-16.aspect-h-9 > *:not(style) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
